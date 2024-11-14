@@ -1,5 +1,6 @@
 <?php
-    require_once 'conexion.php';
+    require_once __DIR__ . '/../conexion.php';
+
     function continente(){
         global $conn;
         $sql = "SELECT * FROM continentes";
