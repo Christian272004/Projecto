@@ -10,7 +10,7 @@ require_once 'Controlador/getContinentes.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Estils/estilos.css">
-    <script src="javaScript/metodos.js"></script>
+    <script src="./Vista/javaScript/metodos.js"></script>
     <title>Projecte</title>
     
     
