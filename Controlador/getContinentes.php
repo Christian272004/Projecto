@@ -1,12 +1,15 @@
 <?php 
     require_once 'Model/Model.php';
-    function mostrarContinente(){
-        $result = '';
-        $result = continente();
+    function mostrarContinente($continenteSeleccionado = null) {
+        $result = continente(); // Suponiendo que esta función devuelve un array de continentes
         $options = "";
+    
         foreach ($result as $row) {
-            $options .= '<option value="' . $row['id_continente'] . '">' . $row["nombre_continente"] . '</option>';
+            // Compara el id del continente con el seleccionado
+            $selected = ($continenteSeleccionado !== null && $continenteSeleccionado == $row['id_continente']) ? 'selected' : '';
+            $options .= '<option value="' . $row['id_continente'] . '" ' . $selected . '>' . $row["nombre_continente"] . '</option>';
         }
+    
         return $options;
     }
 

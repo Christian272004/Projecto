@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Llibreria</title>
+    <title>Wonderful Travel</title>
     <link rel="stylesheet" href="Estils/estilos.css">
 </head>
 <body>
@@ -14,7 +14,22 @@
                 <a href="index.php?pagina=ViatgesGuardats">Viatges guardats</a>
         </div>
         <div class="navbar-center">
-            <span class="fixed-title">**NOM DE LA PÀGINA**</span>
+            <span class="fixed-title"><?php 
+            $opcion = isset($_GET['pagina']) ? $_GET['pagina'] : 'Mostrar';
+            switch($opcion){
+                case "Vista":
+                    echo "VIATGES";
+                    break;
+                case "NouViatge":
+                    echo "NOU VIATGE";
+                    break;
+                case "ViatgesGuardats":
+                    echo "VIATGES GUARDATS";
+                    break;
+                default:
+                    echo "VIATGES";
+                
+            } ?></span>
         </div>
 
         <div class="reloj">
