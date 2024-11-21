@@ -20,14 +20,9 @@ include 'header.php';
             <button type="submit" class="search-button">Buscar</button>
         </form>
         
-        <div class="contenedor-imagenes">
-        <img src="Vista/imagenes/fotosEjemplos/img1.jpg" alt="Imagen 1" class="imagen"> 
-            <img src="Vista/imagenes/fotosEjemplos/img2.jpg" alt="Imagen 2" class="imagen">
-            <img src="Vista/imagenes/fotosEjemplos/img3.jpg" alt="Imagen 3" class="imagen">
-            <img src="Vista/imagenes/fotosEjemplos/img4.jpg" alt="Imagen 4" class="imagen">
-            <img src="Vista/imagenes/fotosEjemplos/img5.jpg" alt="Imagen 5" class="imagen">
-            <img src="Vista/imagenes/fotosEjemplos/img6.jpg" alt="Imagen 6" class="imagen">
-        </div>
+        <form class="contenedor-imagenes" method="POST" action="index.php?pagina=Eliminar">
+            <?= mostrarViajes() ?>
+        </form>
     </div>
 </body>
 </html>

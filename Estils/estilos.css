@@ -81,6 +81,13 @@ body {
   border-radius: 10px;
 }
 
+.errors {
+  background-color: gray;
+  border-radius: 20px;
+  height: 8rem;
+  width: 100%;
+}
+
 .submit {
   width: 100px;
   border: none;
@@ -368,4 +375,77 @@ body {
   width: 0.6px; /* Ajustado proporcionalmente */
   height: 21px; /* Ajustado proporcionalmente */
   background-color: red;
+}
+
+/******************* Pagina de viatges ****************************/
+.contenedor-viajes {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las cartas se envuelvan en la siguiente fila si no hay suficiente espacio */
+  gap: 20px; /* Espacio entre las cartas */
+  padding: 20px; /* Espacio alrededor del contenedor */
+  justify-content: center; /* Centra las cartas en el contenedor */
+}
+
+.carta-viaje {
+  background-color: #ffffff; /* Fondo blanco para la carta */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  position: relative; /* Necesario para posicionar el ícono de forma absoluta */
+  padding: 20px; /* Espacio interno */
+  width: 300px; /* Ancho fijo para cada carta */
+  transition: transform 0.2s; /* Transición para el efecto hover */
+}
+
+
+.boton-eliminar {
+  position: absolute; /* Posiciona el contenedor del ícono de forma absoluta */
+  top: 10px; /* Ajusta la distancia desde la parte superior */
+  right: 20px; /* Ajusta la distancia desde la derecha */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
+  background: none;
+  border: none;
+}
+
+.icono-eliminar {
+  width: 25px; /* Ajusta el tamaño del ícono */
+  height: 25px; /* Ajusta el tamaño del ícono */
+}
+
+.carta-viaje h2 {
+  font-size: 24px; /* Tamaño de la fuente para el título */
+  margin-bottom: 10px; /* Espacio debajo del título */
+  color: #333; /* Color del texto */
+}
+
+.carta-viaje p {
+  font-size: 16px; /* Tamaño de la fuente para los párrafos */
+  margin: 5px 0; /* Espacio arriba y abajo de los párrafos */
+  color: #555; /* Color del texto */
+}
+
+.foto-viaje {
+  max-width: 100%; /* Ajusta la imagen al ancho de la carta */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 8px; /* Bordes redondeados para la imagen */
+  margin-top: 15px; /* Espacio arriba de la imagen */
+}
+
+/* Estilos para el contenedor de las cartas en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .contenedor-viajes {
+      padding: 10px; /* Menos espacio en pantallas pequeñas */
+  }
+
+  .carta-viaje {
+      padding: 15px; /* Menos espacio interno en cartas */
+      width: 100%; /* Ancho completo en pantallas pequeñas */
+  }
+
+  .carta-viaje h2 {
+      font-size: 20px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+  }
+
+  .carta-viaje p {
+      font-size: 14px; /* Tamaño de fuente más pequeño en párrafos */
+  }
 }

@@ -1,4 +1,4 @@
-function cargarPaises() {
+function cargarPaises(paisSeleccionado = null) {
     const continenteSelect = document.getElementById("continente");
     const paisSelect = document.getElementById("pais");
     const continenteSeleccionado = continenteSelect.value;
@@ -25,6 +25,12 @@ function cargarPaises() {
                 option.value = pais.id; // Asignamos el id del país
                 option.textContent = pais.nombre;
                 option.setAttribute('data-foto', pais.foto); // Guardamos la ruta de la foto en un atributo data
+                
+                // Comprobar si este país es el seleccionado
+                if (paisSeleccionado && paisSeleccionado == pais.id) {
+                    option.selected = true; // Establecer como seleccionado
+                }
+
                 paisSelect.appendChild(option);
             });
         })
