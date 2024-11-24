@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wonderful Travel</title>
-    <link rel="stylesheet" href="Estils/estilos.css">
+    <link rel="stylesheet" href="Vista/Estilos/header.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-left">
-                <a href="index.php?pagina=Vista">Inici</a>
+                <!-- <a href="index.php?pagina=Vista">Inici</a> -->
                 <a href="index.php?pagina=NouViatge">Crear un nou viatge</a>
                 <a href="index.php?pagina=ViatgesGuardats">Viatges guardats</a>
         </div>
         <div class="navbar-center">
             <span class="fixed-title"><?php 
-            $opcion = isset($_GET['pagina']) ? $_GET['pagina'] : 'Mostrar';
+            $opcion = isset($_GET['pagina']) ? $_GET['pagina'] : 'NouViatge';
             switch($opcion){
-                case "Vista":
-                    echo "VIATGES";
-                    break;
+                // case "Vista":
+                //     echo "VIATGES";
+                //     break;
                 case "NouViatge":
                     echo "NOU VIATGE";
                     break;
@@ -27,7 +27,7 @@
                     echo "VIATGES GUARDATS";
                     break;
                 default:
-                    echo "VIATGES";
+                    echo "NouViatge";
                 
             } ?></span>
         </div>

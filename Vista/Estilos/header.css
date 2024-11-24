@@ -1,0 +1,161 @@
+/* Estilos para la barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #2278aa;
+    padding: 10px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra debajo de la barra */
+  }
+  
+  /* Enlaces dentro de la barra de navegación */
+  .navbar a {
+    color: #f2f2f2;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .navbar a:hover {
+    background-color: #33bdcc;
+    border-radius: 5px;
+  }
+  
+  /* Secciones de la barra de navegación */
+  .navbar-left, .navbar-center {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-center {
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .fixed-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f2f2f2;
+    position: relative;
+  }
+  
+  /* Reloj analógico */
+  .reloj {
+    width: 50px; /* Tamaño del reloj */
+    height: 50px;
+    position: relative;
+    background: radial-gradient(circle, #05263c, #000d1a);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease; /* Animación al hover */
+  }
+  
+  .reloj::before {
+    content: "";
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to right, #00d9ff, #ee00ff);
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+  }
+  
+  .reloj:hover {
+    transform: scale(1.2); /* Amplía ligeramente el reloj al pasar el ratón */
+  }
+  
+  .numero {
+    transform: rotate(calc(30deg * var(--n)));
+    position: absolute;
+    text-align: center;
+    font-size: 8px;
+    color: #00d9ff;
+    text-shadow: 0 0 12px #ee00ff;
+  }
+  
+  .numero b {
+    transform: rotate(calc(-30deg * var(--n)));
+    display: inline-block;
+  }
+  
+  .centro {
+    position: absolute;
+    width: 4px; /* Tamaño del punto central */
+    height: 4px;
+    background-color: gray;
+    border-radius: 50%;
+  }
+  
+  /* Manecillas del reloj */
+  .horas, .min, .seg {
+    --rotate: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%) rotate(calc(var(--rotate) * 1deg));
+    transform-origin: bottom;
+  }
+  
+  .horas {
+    width: 4px;
+    height: 15px;
+    background-color: black;
+  }
+  
+  .min {
+    width: 3px;
+    height: 20px;
+    background-color: blue;
+  }
+  
+  .seg {
+    width: 2px;
+    height: 22px;
+    background-color: red;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .navbar a {
+      padding: 8px;
+      font-size: 12px;
+    }
+  
+    .reloj {
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .fixed-title {
+      font-size: 18px;
+    }
+  
+    .reloj {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .numero {
+      font-size: 6px;
+    }
+  
+    .horas, .min, .seg {
+      transform-origin: 40%;
+    }
+  }
+  

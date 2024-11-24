@@ -1,0 +1,345 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-top: 60px;
+  background-image: url(../../Vista/imagenes/fotosEjemplos/background.jpg);
+  /* Reemplaza con la ruta de tu imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  z-index: 2;
+  margin-top: 0px;
+}
+
+.form {
+  width: 90%;
+  /* Ajusta el ancho del formulario */
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+
+.flex {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  width: 100%;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input+span {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: grey;
+  font-size: 0.9em;
+  cursor: text;
+}
+
+.form label .input:focus+span,
+.form label .input:valid+span {
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.form label .input:valid+span {
+  color: green;
+}
+
+.form label .select {
+  width: 150px;
+  padding: 10px 10px 20px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.errors {
+  background-color: gray;
+  border-radius: 20px;
+  height: 8rem;
+  width: 100%;
+}
+
+.submit {
+  width: 100px;
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
+  cursor: pointer;
+}
+
+/* For screens with a maximum width of 768px (tablets and smaller) */
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .form {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .paises {
+    flex-direction: column;
+  }
+
+  .form label {
+    width: 100%;
+  }
+
+  .form label .input {
+    width: 100%;
+  }
+}
+
+/* For screens with a maximum width of 480px (mobile phones) */
+@media only screen and (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+
+  .form label {
+    width: 100%;
+  }
+
+  .form label .input {
+    width: 100%;
+  }
+}
+
+
+
+/*
+cheakbox
+  */
+
+
+/* Estilos para el label del checkbox */
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Oculta el checkbox nativo */
+.checkbox-label .input {
+  position: relative;
+  opacity: 0;
+  left: -9999px; /* Lo mueve fuera de la pantalla */
+}
+
+/* Estilos para el texto y el checkbox personalizado */
+.checkbox-label .checkbox-text {
+  position: relative;
+  padding-right: 30px; /* Espacio para el checkbox a la derecha */
+  
+}
+
+/* Creación del checkbox personalizado */
+.checkbox-label .checkbox-text::after {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  position: absolute;
+  right: 0; /* Ubica el checkbox a la derecha del texto */
+  top: 50%;
+  transform: translateY(-50%); /* Centra verticalmente el checkbox */
+}
+
+/* Muestra el checkmark cuando el checkbox está seleccionado */
+.checkbox-label .input:checked + .checkbox-text::after {
+  background-color: #333; /* Cambia el fondo del checkbox al estar seleccionado */
+}
+
+
+
+
+
+
+/* Estils de la barra de navegació */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2278aa;
+  padding: 7px;
+  width: 100%;
+  z-index: 1000;
+  /* Asegurar que esté por encima de otros elementos */
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  /* Asegura que el padding se incluya en el ancho total */
+  margin-bottom: 5px;
+  /* Añadir margen inferior para evitar que el contenido se solape */
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-center {
+  flex-grow: 1;
+  text-align: center;
+  position: relative;
+}
+
+.navbar a {
+  color: #f2f2f2;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #33bdcc;
+}
+
+.fixed-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #f2f2f2;
+  position: fixed;
+  top: 13px;
+  /* Ajusta según sea necesario */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+/* Contenedor central para el contenido */
+.contenedor-central {
+  width: 80%;
+  /* Ajusta el ancho según tus necesidades */
+  max-width: 1000px;
+  margin: 5% auto;
+  /* Centra horizontalmente */
+  background-color: white;
+  /* Fondo del contenedor */
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra alrededor del cuadro */
+  border-radius: 10px;
+  /* Bordes redondeados */
+}
+
+.contenedor-central,
+h1 {
+  text-align: center;
+  /* Centra el texto */
+}
+
+
+.imagen {
+  margin: 20px;
+  /* Espacio entre las imágenes */
+  width: 250px;
+  /* Ajusta el tamaño de las imágenes según sea necesario */
+  height: auto;
+  /* Mantiene la proporción de las imágenes */
+  border-radius: 8px;
+  /* Bordes redondeados para un mejor aspecto */
+}
+
+.contenedor-imagenes {
+  display: flex;
+  justify-content: center;
+  /* Centra las imágenes horizontalmente */
+  flex-wrap: wrap;
+  /* Permite que las imágenes se envuelvan en la siguiente fila si no hay suficiente espacio */
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  /* Espacio entre la barra de búsqueda y las imágenes */
+}
+
+.search-input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-left: none;
+  background-color: #2278aa;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #33bdcc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

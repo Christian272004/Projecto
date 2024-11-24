@@ -9,18 +9,26 @@ include_once 'header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projecte</title>
-    <link rel="stylesheet" href="Estils/estilos.css">
+    <link rel="stylesheet" href="Vista/Estilos/insertar.css">
     <!-- Incluir los archivos JavaScript del Modelo, Vista y Controlador -->
-  
+
     <script src="Model/Model.js"></script>
     <script src="Vista/View.js"></script>
     <script src="Controlador/Controller.js"></script>
+    <script>
+        function setPagina(valor) {
+            document.getElementById('pagina').value = valor;
+        }
+    </script>
+
 </head>
 
 <body>
     <div class="container">
         <!-- Formulario principal -->
-        <form class="form" action="index.php?pagina=Formulario" method="POST">
+        <form class="form" action="index.php" method="POST">
+            <input type="hidden" name="pagina" id="pagina" value="Formulario">
+
             <div>
                 <label>
                     <span>Data</span>
@@ -61,18 +69,24 @@ include_once 'header.php';
             </label>
             <label>
                 <span>Persones</span>
-                <input min="1" class="input" id="personas" name="personas" type="number" value="<?php echo isset($numPersones) ? $numPersones : ''; ?>">
+                <input min="1" class="input" id="personas" name="personas" type="number" value="<?php echo isset($numPersones) ? $numPersones : '1'; ?>">
             </label>
-            <label>
-                <input type="checkbox" class="input">
-                <span class="custom-checkbox">Descompte del 20%</span>
+            <label class="checkbox-label">
+                <input type="checkbox" class="input" name="descuento" value="1">
+                <span class="checkbox-text">Descompte del 20%</span>
             </label>
+
+
             <div id="imagenPais">
                 <img id="fotoPais" src="" alt="Imagen del país seleccionado" style="display:none; max-width: 300px;">
             </div>
             <?php echo isset($mostrar) ? $mostrar : '' ?>
             <div class="flex">
-                <button class="submit" name="boton" id="boton" value="Afegir">Afegir</button>
+                <div class="flex">
+                    <button type="submit" class="submit" name="boton" id="boton_afegir" value="Afegir">Afegir</button>
+                    <button type="submit" class="submit" name="boton" id="boton_guardats" value="ViatgesGuardats" onclick="setPagina('ViatgesGuardats')">Viatges guardats</button>
+                </div>
+
             </div>
         </form>
     </div>
