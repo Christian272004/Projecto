@@ -10,6 +10,7 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
     $nom = isset($name)? trim(htmlspecialchars($name)) : '';
     $telef = isset($tel)? trim(htmlspecialchars($tel)) : 0;
     $numPersones = isset($numPers)? (int)trim(htmlspecialchars($numPers)) : 0;
+    $descuentoAplicado = isset($_POST['descuento']) && $_POST['descuento'] == '1';
     $mensajes = array();
     $mostrar = '';
 
@@ -47,7 +48,15 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
         $fechaVerificada = verificarFecha($fecha);
         $telefVerificado = validarTelefono($telef);
         if ($fechaVerificada || $telefVerificado) {
-            $resultado = insertarBD($fecha, $continente, $pais, $preu, ($preu * $numPersones), $nom, $telef,$numPersones);
+
+            $precioTotal = $preu * $numPersones;
+            if ($descuentoAplicado) {
+                $precioTotal *= 0.8; // Descuento del 20%
+            }
+            $precioTotalFormateado = number_format($precioTotal, 2);
+
+
+            $resultado = insertarBD($fecha, $continente, $pais, $preu, ($precioTotalFormateado), $nom, $telef,$numPersones);
             $mostrar .= '<div id="caja_mensaje" class="enviar">' . $resultado . '</div>';
         } else {
             $mensajes[] = "La fecha no es valida";
