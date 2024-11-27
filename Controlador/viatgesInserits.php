@@ -18,6 +18,7 @@ function mostrarViajes()
         $nombre = htmlspecialchars($viaje['nom']);
         $telefono = htmlspecialchars($viaje['telef']);
         $numPersonas = htmlspecialchars($viaje['persones']);
+        
         $Id = htmlspecialchars($viaje['Id']);
         $rutaImagen = obtenerRutaImagenPorId($pais);
 
@@ -53,7 +54,7 @@ function mostrarViajes()
 
         $htmlViatges .= '</div>'; // Cierre de la carta del viaje
     }
-    // $htmlViatges .= '<br><button> Hola </button>';
+
     $htmlViatges .= '</div>'; // Cierre del contenedor de viajes
     
     return $htmlViatges;

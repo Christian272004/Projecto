@@ -10,6 +10,7 @@ include_once 'header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projecte</title>
     <link rel="stylesheet" href="Vista/Estilos/insertar.css">
+    <link rel="stylesheet" href="Vista/Estilos/viatgesInserits.css">
     <!-- Incluir los archivos JavaScript del Modelo, Vista y Controlador -->
 
     <script src="Model/Model.js"></script>
@@ -80,7 +81,7 @@ include_once 'header.php';
             <div id="imagenPais">
                 <img id="fotoPais" src="" alt="Imagen del país seleccionado" style="display:none; max-width: 300px;">
             </div>
-            <?php echo isset($mostrar) ? $mostrar : '' ?>
+         
             <div class="flex">
                 <div class="flex">
                     <button type="submit" class="submit" name="boton" id="boton_afegir" value="Afegir">Afegir</button>
@@ -90,7 +91,11 @@ include_once 'header.php';
             </div>
         </form>
     </div>
-    </div>
+   
+    <?= require_once __DIR__ . '../../Controlador/viatgesInserits.php' ?>
+    <div class="viajesGuardados"> <?= mostrarViajes() ?></div>
+    
+
     <!-- Inicialización del Controlador -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
