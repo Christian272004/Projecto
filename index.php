@@ -1,6 +1,8 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $opcion = isset($_POST['pagina']) ? $_POST['pagina'] : 'Mostrar';
+
+    $opcion = isset($_POST['pagina']) ? $_POST['pagina'] : 'Formulario';
+
     switch ($opcion) {
         case 'Formulario':
             require_once 'Controlador/Insertar.php';
@@ -9,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         case 'Eliminar':
             require_once 'Controlador/EliminarViatge.php';
+           
             eliminarViatge($_POST['id_viatge']);
             break;
         case 'ViatgesGuardats':
@@ -23,8 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+
+
     $opcion = isset($_GET['pagina']) ? $_GET['pagina'] : 'NouViatge';
-    switch ($opcion) {
+
+     switch ($opcion) {
         case 'NouViatge':
             require_once 'Controlador/getContinentes.php';
             include 'Vista/insertar.php';

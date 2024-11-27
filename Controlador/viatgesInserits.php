@@ -26,7 +26,8 @@ function mostrarViajes()
         $htmlViatges .= '<div class="carta-viaje">';
 
         // Formulario para eliminar el viaje
-        $htmlViatges .= '<form action="index.php?pagina=Eliminar" method="POST" style="display: inline;">';
+        $htmlViatges .= '<form action="index.php" method="POST" style="display: inline;">';
+        $htmlViatges .= '<input type="hidden" name="pagina" value="Eliminar">';
         $htmlViatges .= '<input type="hidden" name="id_viatge" value="' . $Id . '">'; // Campo oculto con el ID
         $htmlViatges .= '<button type="submit" class="boton-eliminar">';
         $htmlViatges .= '<img src="./Vista/imagenes/assets/trash.svg" alt="Eliminar" class="icono-eliminar">';
