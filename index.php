@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             require_once 'Controlador/Insertar.php';
             require_once 'Controlador/getContinentes.php';
             require_once 'Controlador/viatgesInserits.php';
-            insertar($_POST['fecha'], $_POST['continente'], $_POST['pais'], $_POST['precio'], $_POST['nom'], $_POST['telef'], $_POST['personas']);
+            insertar($_POST['fecha'], $_POST['continente'], $_POST['pais'], $_POST['precio'], $_POST['nom'], $_POST['telef'], $_POST['personas'],$_POST['descuento']);
             break;
         case 'Eliminar':
             require_once 'Controlador/EliminarViatge.php';

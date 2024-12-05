@@ -1,9 +1,7 @@
-const Controller = ((Model, View) => {
-    const init = () => {
-        bindEvents();
-        setupModal();
-    };
+import { getPaises, getPrecio } from '../Model/Model.js';
+import { renderPaises, renderPrecio, mostrarFotoPais } from '../Vista/View.js';
 
+function main() {
     const bindEvents = () => {
         const continenteSelect = document.getElementById("continente");
         const paisSelect = document.getElementById("pais");
@@ -19,49 +17,34 @@ const Controller = ((Model, View) => {
         const confirmDelete = document.getElementById("confirmDelete");
         const cancelDelete = document.getElementById("cancelDelete");
 
-        let viajeId; // Variable para almacenar el ID del viaje a eliminar
+        let formToSubmit; // Variable para almacenar el formulario a enviar
 
         // Función para abrir el modal
         btnEliminar.forEach(button => {
-            button.addEventListener('click', function(event) {
+            button.addEventListener('click', function (event) {
                 event.preventDefault(); // Previene el comportamiento por defecto del botón
-                viajeId = this.nextElementSibling.value; // Obtiene el ID del viaje a eliminar
+                formToSubmit = this.closest('form'); // Obtiene el formulario correspondiente
                 modal.style.display = "block"; // Muestra el modal
             });
         });
 
         // Función para cerrar el modal
-        closeModal.onclick = function() {
+        closeModal.onclick = function () {
             modal.style.display = "none";
         }
 
-        cancelDelete.onclick = function() {
+        cancelDelete.onclick = function () {
             modal.style.display = "none"; // Cierra el modal al cancelar
         }
 
         // Función para confirmar la eliminación
-        confirmDelete.onclick = function() {
-            const form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'index.php'; // Cambia esto a la URL correcta
-            const hiddenField = document.createElement('input');
-            hiddenField.type = 'hidden';
-            hiddenField.name = 'pagina';
-            hiddenField.value = 'Eliminar'; // Cambia esto según tu lógica
-            form.appendChild(hiddenField);
-
-            const idField = document.createElement('input');
-            idField.type = 'hidden';
-            idField.name = 'id_viatge';
-            idField.value = viajeId; // Asigna el ID del viaje
-            form.appendChild(idField);
-
-            document.body.appendChild(form); // Agrega el formulario al DOM
-            form.submit(); // Envía el formulario
+        confirmDelete.onclick = function () {
+            modal.style.display = "none"; // Cierra el modal
+            formToSubmit.submit(); // Envía el formulario
         }
 
         // Cierra el modal si se hace clic fuera de él
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
             }
@@ -76,9 +59,9 @@ const Controller = ((Model, View) => {
             return;
         }
 
-        Model.getPaises(continenteId)
+        getPaises(continenteId)
             .then(paises => {
-                View.renderPaises(paises);
+                renderPaises(paises);
             })
             .catch(error => console.error('Error al cargar los países:', error));
     };
@@ -89,25 +72,38 @@ const Controller = ((Model, View) => {
         const optionSeleccionada = paisSelect.options[paisSelect.selectedIndex];
         const rutaImagen = optionSeleccionada.getAttribute('data-foto');
 
-        View.mostrarFotoPais(rutaImagen);
+        mostrarFotoPais(rutaImagen);
 
         if (!paisId) {
             return;
         }
 
-        Model.getPrecio(paisId)
+        getPrecio(paisId)
             .then(data => {
                 if (data && data.precio) {
-                    View.renderPrecio(data.precio);
+                    renderPrecio(data.precio);
                 } else {
                     console.error("No se encontró el precio para el país seleccionado.");
-                    View.renderPrecio(null);
+                    renderPrecio(null);
                 }
             })
             .catch(error => console.error('Error al cargar el precio:', error));
     };
+    // Obtiene la URL actual
+    const urlParams = new URLSearchParams(window.location.search);
 
-    return {
-        init
-    };
-})(Model, View);
+    // Obtiene un parámetro específico
+    const parametro = urlParams.get('pagina'); // Reemplaza 'parametro' con el nombre del parámetro que deseas obtener
+    console.log(parametro);
+
+    if (parametro === 'NouViatge' || parametro === null) {
+        bindEvents();
+        
+    } else {
+        setupModal();
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    main();
+});
