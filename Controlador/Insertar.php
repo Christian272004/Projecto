@@ -2,7 +2,7 @@
 
 require_once 'Model/Model.php';
 
-function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
+function insertar($data,$contin,$country,$price,$name,$tel,$numPers,$descuento = null) {
     $fecha = isset($data)? trim(htmlspecialchars($data)) : '';
     $continente = isset($contin)? trim(htmlspecialchars($contin)) : 0;
     $pais = isset($country)? trim(htmlspecialchars($country)) : 0;
@@ -11,10 +11,9 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
     $nom = isset($name)? trim(htmlspecialchars($name)) : '';
     $telef = isset($tel)? trim(htmlspecialchars($tel)) : 0;
     $numPersones = isset($numPers)? (int)trim(htmlspecialchars($numPers)) : 0;
-    $descuentoAplicado = isset($_POST['descuento']) && $_POST['descuento'] == '1';
+    $descuentoAplicado = isset($descuento) ? true : false;
     $mensajes = array();
     $mostrar = '';
-
     // Verificaciones de los datos.
     $campos = [
         'fecha' => 'El camp de la data no pot estar vuit.',
@@ -25,13 +24,14 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
         'telef' => 'El camp del telef no pot estar vuit.',
         'numPersones' => 'El camp de Persones no pot estar vuit.'
     ];
-
+    
     foreach ($campos as $campo => $mensaje) {
         if (empty($$campo)) {
             $mensajes[] = $mensaje;
         }
     }
-
+    
+    echo sprintf("Fecha: %s, Continente: %s, Pais: %s, Precio: %s, Nombre: %s, Telefono: %s, Personas: %s, Descuento: %s", $fecha, $continente, $nombrePais, $preu, $nom, $telef, $numPersones, $descuentoAplicado);
     // Verificar y convertir a numérico
     if (!is_numeric($preu)) {
         $preu = 0;
@@ -44,20 +44,18 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
     } else {
         $numPersones = (int)$numPersones;
     }
-
     if (empty($mensajes)) {
         $fechaVerificada = verificarFecha($fecha);
         $telefVerificado = validarTelefono($telef);
         if ($fechaVerificada && $telefVerificado) {
-
+            
             $precioTotal = $preu * $numPersones;
             if ($descuentoAplicado) {
                 $precioTotal *= 0.8; // Descuento del 20%
             }
-            $precioTotalFormateado = number_format($precioTotal, 2);
 
-
-            $resultado = insertarBD($fecha, $continente, $nombrePais, $preu, ($precioTotalFormateado), $nom, $telef,$numPersones);
+            $resultado = insertarBD($fecha, $continente, $nombrePais, $preu, $precioTotal, $nom, $telef,$numPersones);
+            
             $mostrar .= '<div id="caja_mensaje" class="enviar">' . $resultado . '</div>';
         } else {
             $mensajes[] = "La data no és vàlida";

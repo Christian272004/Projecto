@@ -9,6 +9,7 @@ include 'header.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Vista/Estilos/viatgesInserits.css">
+    <script type="module" src="Controlador/Controller.js"></script>
     <title>Document</title>
 </head>
 
@@ -31,10 +32,10 @@ include 'header.php';
             <button type="submit" class="search-button">Buscar</button>
         </form>
 
-        <form class="contenedor-imagenes" method="POST" action="index.php?pagina=Eliminar">
+       
             <?= mostrarViajes() ?>
             <button class="boton-atras" onclick="window.location.href='index.php?pagina=Formulari'">Atrás</button>
-        </form>
+        
         <div id="confirmModal" class="modal">
             <div class="modal-content">
                 <span class="close" id="closeModal">&times;</span>

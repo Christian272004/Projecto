@@ -12,10 +12,7 @@ include_once 'header.php';
     <link rel="stylesheet" href="Vista/Estilos/insertar.css">
     <link rel="stylesheet" href="Vista/Estilos/viatgesInserits.css">
     <!-- Incluir los archivos JavaScript del Modelo, Vista y Controlador -->
-
-    <script src="Model/Model.js"></script>
-    <script src="Vista/View.js"></script>
-    <script src="Controlador/Controller.js"></script>
+    <script type="module" src="Controlador/Controller.js"></script>
     <script>
         function setPagina(valor) {
             document.getElementById('pagina').value = valor;
@@ -92,12 +89,7 @@ include_once 'header.php';
         </form>
     </div>    
 
-    <!-- Inicialización del Controlador -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            Controller.init();
-        });
-    </script>
+    
 </body>
 
 </html>

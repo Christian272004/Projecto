@@ -1,40 +1,35 @@
-const View = (() => {
-    const renderPaises = (paises, paisSeleccionado = null) => {
-        const paisSelect = document.getElementById("pais");
-        paisSelect.innerHTML = '<option value="">Selecciona un país</option>';
 
-        paises.forEach(pais => {
-            const option = document.createElement("option");
-            option.value = pais.id;
-            option.textContent = pais.nombre;
-            option.setAttribute('data-foto', pais.foto);
+export const renderPaises = (paises, paisSeleccionado = null) => {
+    const paisSelect = document.getElementById("pais");
+    paisSelect.innerHTML = '<option value="">Selecciona un país</option>';
 
-            if (paisSeleccionado && paisSeleccionado == pais.id) {
-                option.selected = true;
-            }
+    paises.forEach(pais => {
+        const option = document.createElement("option");
+        option.value = pais.id;
+        option.textContent = pais.nombre;
+        option.setAttribute('data-foto', pais.foto);
 
-            paisSelect.appendChild(option);
-        });
-    };
-
-    const renderPrecio = (precio) => {
-        const precioInput = document.getElementById("precio");
-        precioInput.value = precio ? `${precio}€` : '';
-    };
-
-    const mostrarFotoPais = (rutaImagen) => {
-        const img = document.getElementById('fotoPais');
-        if (rutaImagen) {
-            img.src = rutaImagen;
-            img.style.display = 'block';
-        } else {
-            img.style.display = 'none';
+        if (paisSeleccionado && paisSeleccionado == pais.id) {
+            option.selected = true;
         }
-    };
 
-    return {
-        renderPaises,
-        renderPrecio,
-        mostrarFotoPais
-    };
-})();
+        paisSelect.appendChild(option);
+    });
+};
+
+export const renderPrecio = (precio) => {
+    const precioInput = document.getElementById("precio");
+    precioInput.value = precio ? `${precio}€` : '';
+};
+
+export const mostrarFotoPais = (rutaImagen) => {
+    const img = document.getElementById('fotoPais');
+    if (rutaImagen) {
+        img.src = rutaImagen;
+        img.style.display = 'block';
+    } else {
+        img.style.display = 'none';
+    }
+};
+
+

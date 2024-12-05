@@ -28,14 +28,14 @@ function mostrarViajes()
         // Mostramos los datos del viaje
         $htmlViatges .= '<div class="carta-viaje">';
 
-        // Formulario para eliminar el viaje
-        $htmlViatges .= '<form action="index.php" method="POST" style="display: inline;" class="form-eliminar">';
-        $htmlViatges .= '<input type="hidden" name="pagina" value="Eliminar">';
-        $htmlViatges .= '<input type="hidden" name="id_viatge" value="' . $Id . '">'; 
-        $htmlViatges .= '<button type="button" class="boton-eliminar" data-id="' . $Id . '">';
-        $htmlViatges .= '<img src="./Vista/imagenes/assets/trash.svg" alt="Eliminar" class="icono-eliminar">';
-        $htmlViatges .= '</button>';
-        $htmlViatges .= '</form>';
+       // Formulario para eliminar el viaje
+       $htmlViatges .= '<form action="index.php" method="POST" style="display: inline;" class="form-eliminar">';
+       $htmlViatges .= '<input type="hidden" name="pagina" value="Eliminar">';
+       $htmlViatges .= '<input type="hidden" name="id_viatge" value="' . $Id . '">';
+       $htmlViatges .= '<button type="button" class="boton-eliminar" data-id="' . $Id . '">';
+       $htmlViatges .= '<img src="./Vista/imagenes/assets/trash.svg" alt="Eliminar" class="icono-eliminar">';
+       $htmlViatges .= '</button>';
+       $htmlViatges .= '</form>';
 
         $htmlViatges .= '<h2>Dades del viatge</h2>';
         $htmlViatges .= '<p><strong>Data:</strong> ' . $fecha . '</p>';
