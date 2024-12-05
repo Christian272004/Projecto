@@ -15,8 +15,8 @@
         </div>
         <div class="navbar-center">
             <span class="fixed-title"><?php 
-            $opcion = isset($_GET['pagina']) ? $_GET['pagina'] : 'NouViatge';
-            switch($opcion){
+            $page = isset($_GET['pagina']) ? $_GET['pagina'] : 'NouViatge';
+            switch($page){
                 // case "Vista":
                 //     echo "VIATGES";
                 //     break;

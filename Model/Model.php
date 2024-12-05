@@ -41,10 +41,22 @@
         return $mensaje;
     }
 
-    function viatges() {
+    function viatges($ordenar,$search) {
         global $conn;
         $query = "SELECT * FROM informacio_viatge";
+        if (!empty($search)) {
+            $query .= " WHERE pais LIKE :query"; // Filtrar por país
+        }
+        
+        if ($ordenar == 'fecha') {
+            $query .= " ORDER BY Data"; // Ordenar por fecha
+        } elseif ($ordenar == 'pais') {
+            $query .= " ORDER BY pais"; // Ordenar por país
+        }
         $statement = $conn->prepare($query);
+        if (!empty($search)) {
+            $statement->bindValue(':query', '%' . $search . '%'); // Usar LIKE para búsqueda
+        }
         $statement->execute();
         $resultado = $statement->fetchAll();
         $viatges = [];
@@ -80,11 +92,11 @@
         }
     }
 
-    function obtenerRutaImagenPorId($pais_id) {
+    function obtenerRutaImagenPorId($nombre_pais) {
         global $conn;
-        $query = "SELECT foto FROM paises WHERE id_pais = :pais_id";
+        $query = "SELECT foto FROM paises WHERE nombre_pais = :nombre_pais";
         $statement = $conn->prepare($query);
-        $statement->execute([':pais_id' => $pais_id]);
+        $statement->execute([':nombre_pais' => $nombre_pais]);
         $resultado = $statement->fetch(PDO::FETCH_ASSOC);
     
         // Comprobamos si se encontró la imagen

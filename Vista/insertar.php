@@ -41,17 +41,17 @@ include_once 'header.php';
             <div class="flex">
                 <!-- Selección de Continente y País dentro del mismo formulario -->
                 <label>
-                    <label>Continente</label>
+                    <label>Continent</label>
                     <select class="select" id="continente" name="continente">
-                        <option value="">Selecciona un continente</option>
+                        <option value="">Selecciona un continent</option>
                         <?php echo mostrarContinente(isset($continente) ? $continente : null); ?>
                     </select>
                 </label>
 
                 <label>
-                    <span>Pais</span>
+                    <span>País</span>
                     <select class="select" id="pais" name="pais">
-                        <option value="<?php echo isset($pais) ? $pais : ''; ?>">Pais</option>
+                        <option value="<?php echo isset($pais) ? $pais : ''; ?>">País</option>
                     </select>
                 </label>
             </div>
@@ -78,23 +78,19 @@ include_once 'header.php';
             </label>
 
 
-            <div id="imagenPais">
-                <img id="fotoPais" src="" alt="Imagen del país seleccionado" style="display:none; max-width: 300px;">
+            <div class="imagenPais" id="imagenPais">
+                <img class="imagen" id="fotoPais" src="" alt="Imagen del país seleccionado" style="display:none;">
             </div>
-         
+         <?php echo isset($mostrar)? $mostrar:"" ?>
             <div class="flex">
                 <div class="flex">
                     <button type="submit" class="submit" name="boton" id="boton_afegir" value="Afegir">Afegir</button>
                     <button type="submit" class="submit" name="boton" id="boton_guardats" value="ViatgesGuardats" onclick="setPagina('ViatgesGuardats')">Viatges guardats</button>
                 </div>
-
+            
             </div>
         </form>
-    </div>
-   
-    <?= require_once __DIR__ . '../../Controlador/viatgesInserits.php' ?>
-    <div class="viajesGuardados"> <?= mostrarViajes() ?></div>
-    
+    </div>    
 
     <!-- Inicialización del Controlador -->
     <script>

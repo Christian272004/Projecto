@@ -7,7 +7,10 @@ function mostrarViajes()
 {
     // Comenzamos un contenedor para los viajes
     $htmlViatges = '<div class="contenedor-viajes">';
-    $viajes = viatges();
+    $ordenar = isset($_GET['ordenar']) ? $_GET['ordenar'] : 'fecha';
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    $viajes = viatges($ordenar, $search);
 
     foreach ($viajes as $viaje) {
         // Extraemos los datos del viaje
@@ -18,7 +21,7 @@ function mostrarViajes()
         $nombre = htmlspecialchars($viaje['nom']);
         $telefono = htmlspecialchars($viaje['telef']);
         $numPersonas = htmlspecialchars($viaje['persones']);
-        
+
         $Id = htmlspecialchars($viaje['Id']);
         $rutaImagen = obtenerRutaImagenPorId($pais);
 
@@ -26,10 +29,10 @@ function mostrarViajes()
         $htmlViatges .= '<div class="carta-viaje">';
 
         // Formulario para eliminar el viaje
-        $htmlViatges .= '<form action="index.php" method="POST" style="display: inline;">';
+        $htmlViatges .= '<form action="index.php" method="POST" style="display: inline;" class="form-eliminar">';
         $htmlViatges .= '<input type="hidden" name="pagina" value="Eliminar">';
-        $htmlViatges .= '<input type="hidden" name="id_viatge" value="' . $Id . '">'; // Campo oculto con el ID
-        $htmlViatges .= '<button type="submit" class="boton-eliminar">';
+        $htmlViatges .= '<input type="hidden" name="id_viatge" value="' . $Id . '">'; 
+        $htmlViatges .= '<button type="button" class="boton-eliminar" data-id="' . $Id . '">';
         $htmlViatges .= '<img src="./Vista/imagenes/assets/trash.svg" alt="Eliminar" class="icono-eliminar">';
         $htmlViatges .= '</button>';
         $htmlViatges .= '</form>';
@@ -50,13 +53,13 @@ function mostrarViajes()
         if ($rutaImagen) {
             $htmlViatges .= '<img src="' . $rutaImagen . '" alt="Foto del viaje a ' . $nombrePais . '" class="foto-viaje">';
         } else {
-            echo "No se encontró una imagen para el país con ese ID.";
+            //echo "No se encontró una imagen para el país con ese ID.";
         }
 
-        $htmlViatges .= '</div>'; // Cierre de la carta del viaje
+        $htmlViatges .= '</div>'; 
     }
 
-    $htmlViatges .= '</div>'; // Cierre del contenedor de viajes
-    
+    $htmlViatges .= '</div>'; 
+
     return $htmlViatges;
 }

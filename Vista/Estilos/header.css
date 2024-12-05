@@ -39,89 +39,91 @@
   }
   
   .fixed-title {
+    margin-right: 20%;
     font-size: 20px;
     font-weight: bold;
     color: #f2f2f2;
     position: relative;
   }
-  
-  /* Reloj analógico */
+
+   /* Reloj analógico */
   .reloj {
-    width: 50px; /* Tamaño del reloj */
+    width: 50px;
     height: 50px;
     position: relative;
-    background: radial-gradient(circle, #05263c, #000d1a);
+    background-color: lightgray;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.3s ease; /* Animación al hover */
-  }
-  
-  .reloj::before {
+    /* Estilos mas bonitos*/
+    background: radial-gradient(circle,#ffffff,#000d1a);
+}
+
+/* Estilos mas bonitos*/
+.reloj::before {
     content: "";
     width: 55px;
     height: 55px;
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(to right, #00d9ff, #ee00ff);
-    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right,#00d9ff,#ee00ff);
+    box-shadow: 0 0 15px 15px rgba(0, 0 ,0 , 0.2);
     z-index: -1;
-  }
-  
-  .reloj:hover {
-    transform: scale(1.2); /* Amplía ligeramente el reloj al pasar el ratón */
-  }
-  
-  .numero {
-    transform: rotate(calc(30deg * var(--n)));
+}
+.reloj:hover {
+  transform: scale(2.5) translate(-20px,20px); /* Amplía ligeramente el reloj al pasar el ratón */
+}
+.numero {
+    transform: rotate(calc(30deg *var(--n)));
     position: absolute;
     text-align: center;
+    inset: 0px;
     font-size: 8px;
+    /* Estilos mas bonitos*/
     color: #00d9ff;
     text-shadow: 0 0 12px #ee00ff;
-  }
-  
-  .numero b {
+}
+
+.numero b {
     transform: rotate(calc(-30deg * var(--n)));
     display: inline-block;
-  }
-  
-  .centro {
+}
+
+.centro {
     position: absolute;
-    width: 4px; /* Tamaño del punto central */
+    width: 4px;
     height: 4px;
     background-color: gray;
     border-radius: 50%;
-  }
-  
-  /* Manecillas del reloj */
-  .horas, .min, .seg {
+}
+/* Manecillas del reloj */
+.horas, .min, .seg {
     --rotate: 0;
     position: absolute;
     left: 50%;
     bottom: 50%;
     transform: translate(-50%) rotate(calc(var(--rotate) * 1deg));
     transform-origin: bottom;
-  }
-  
-  .horas {
+}
+
+.horas {
     width: 4px;
     height: 15px;
     background-color: black;
-  }
-  
-  .min {
+}
+
+.min {
     width: 3px;
     height: 20px;
-    background-color: blue;
-  }
-  
-  .seg {
+    background-color: blue; /*cabmiar el color de la manecilla*/
+}
+
+.seg {
     width: 2px;
     height: 22px;
     background-color: red;
-  }
+}
   
   /* Responsividad */
   @media (max-width: 768px) {

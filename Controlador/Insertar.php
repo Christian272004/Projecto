@@ -6,6 +6,7 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
     $fecha = isset($data)? trim(htmlspecialchars($data)) : '';
     $continente = isset($contin)? trim(htmlspecialchars($contin)) : 0;
     $pais = isset($country)? trim(htmlspecialchars($country)) : 0;
+    $nombrePais = obtenerNombrePaisPorId($pais);
     $preu = isset($price)? (float)trim(htmlspecialchars($price)) : 0;
     $nom = isset($name)? trim(htmlspecialchars($name)) : '';
     $telef = isset($tel)? trim(htmlspecialchars($tel)) : 0;
@@ -33,21 +34,21 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
 
     // Verificar y convertir a numérico
     if (!is_numeric($preu)) {
-        $preu = 0; // O manejar el error de otra manera
+        $preu = 0;
     } else {
-        $preu = (float)$preu; // Convertir a float
+        $preu = (float)$preu; 
     }
 
     if (!is_numeric($numPersones)) {
-        $numPersones = 0; // O manejar el error de otra manera
+        $numPersones = 0; 
     } else {
-        $numPersones = (int)$numPersones; // Convertir a int
+        $numPersones = (int)$numPersones;
     }
 
     if (empty($mensajes)) {
         $fechaVerificada = verificarFecha($fecha);
         $telefVerificado = validarTelefono($telef);
-        if ($fechaVerificada || $telefVerificado) {
+        if ($fechaVerificada && $telefVerificado) {
 
             $precioTotal = $preu * $numPersones;
             if ($descuentoAplicado) {
@@ -56,10 +57,10 @@ function insertar($data,$contin,$country,$price,$name,$tel,$numPers) {
             $precioTotalFormateado = number_format($precioTotal, 2);
 
 
-            $resultado = insertarBD($fecha, $continente, $pais, $preu, ($precioTotalFormateado), $nom, $telef,$numPersones);
+            $resultado = insertarBD($fecha, $continente, $nombrePais, $preu, ($precioTotalFormateado), $nom, $telef,$numPersones);
             $mostrar .= '<div id="caja_mensaje" class="enviar">' . $resultado . '</div>';
         } else {
-            $mensajes[] = "La fecha no es valida";
+            $mensajes[] = "La data no és vàlida";
         }
         
     }

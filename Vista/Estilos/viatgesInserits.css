@@ -15,6 +15,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   
+  
+
   .contenedor-central {
     width: 80%; /* Ajusta el ancho según tus necesidades */
     max-width: 1000px;
@@ -25,9 +27,66 @@ body {
     border-radius: 10px; /* Bordes redondeados */
   }
   
-  .contenedor-central, h1 {
-    text-align: center; /* Centra el texto */
+  .contenedor-central h1 {
+    text-align: center;
+    
   }
+
+  .contenedor-central h4 {
+    text-align: center;
+    color: #000;
+    
+  }
+
+  /* Estilos para el formulario de ordenación */
+.formulario-ordenacion {
+  display: flex; /* Usar flexbox para alinear elementos */
+  justify-content: center; /* Centrar el formulario horizontalmente */
+  align-items: center; /* Centrar el formulario verticalmente */
+  margin: 20px 0; /* Margen superior e inferior */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+
+}
+
+/* Estilo para el label */
+.formulario-ordenacion label {
+  margin-right: 10px; /* Espacio a la derecha del label */
+  font-weight: bold; /* Negrita para el texto del label */
+}
+
+/* Estilo para el select (menú desplegable) */
+.formulario-ordenacion select {
+  padding: 10px; /* Espaciado interno */
+  
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+  margin-right: 10px; /* Espacio a la derecha del select */
+  transition: border-color 0.3s; /* Transición suave para el borde */
+}
+
+/* Cambiar el borde del select al enfocar */
+.formulario-ordenacion select:focus {
+  border-color: #2278aa; /* Color del borde al enfocar */
+  outline: none; /* Sin contorno */
+}
+
+/* Estilo para el botón */
+.formulario-ordenacion button {
+  padding: 10px 15px; /* Espaciado interno */
+  background-color: #2278aa; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+  font-size: 16px; /* Tamaño de fuente */
+  transition: background-color 0.3s; /* Transición suave para el fondo */
+}
+
+/* Efecto al pasar el ratón por encima del botón */
+.formulario-ordenacion button:hover {
+  background-color: #33bdcc; /* Cambiar color de fondo al pasar el ratón */
+}
   
   .search-form {
     display: flex;
@@ -65,7 +124,7 @@ body {
   
   .imagen, .foto-viaje {
     margin: 20px; /* Espacio entre las imágenes */
-    width: 250px; /* Ajusta el tamaño de las imágenes según sea necesario */
+    width: 280px; /* Ajusta el tamaño de las imágenes según sea necesario */
     height: auto; /* Mantiene la proporción de las imágenes */
     border-radius: 8px; /* Bordes redondeados para un mejor aspecto */
   }
@@ -85,7 +144,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
     position: relative; /* Necesario para posicionar el ícono de forma absoluta */
     padding: 20px; /* Espacio interno */
-    width: 300px; /* Ancho fijo para cada carta */
+    
     transition: transform 0.2s; /* Transición para el efecto hover */
   }
   
@@ -166,3 +225,54 @@ body {
     background-color: #45a049; /* Cambiar a un verde más oscuro */
   }
   
+
+  /* Estilos del Modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Habilita el desplazamiento si es necesario */
+  background-color: rgb(0,0,0); /* Color de fondo negro */
+  background-color: rgba(0,0,0,0.4); /* Fondo negro con opacidad */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% desde la parte superior y centrado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho del modal */
+  max-width: 500px; /* Ancho máximo */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  background-color: #2278aa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #33bdcc;
+}
